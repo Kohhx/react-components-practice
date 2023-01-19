@@ -1,11 +1,16 @@
 import React from "react";
 import Button from "./Button";
+import { FaAccessibleIcon } from "react-icons/fa";
 
 const App = () => {
+
+  const handleClick = () => {
+    console.log("Clicked")
+  }
   return (
     <div>
       <div>
-        <Button primary rounded>Clicked Me!</Button>
+        <Button primary rounded onClick={handleClick}><FaAccessibleIcon/>Clicked Me!</Button>
       </div>
       <div>
         <Button secondary outline>Buy Me!</Button>
