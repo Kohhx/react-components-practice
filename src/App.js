@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       <div>
-        <Button primary rounded onClick={handleClick}><FaAccessibleIcon/>Clicked Me!</Button>
+        <Button primary rounded onClick={handleClick} className="mb-1"><FaAccessibleIcon/>Clicked Me!</Button>
       </div>
       <div>
         <Button secondary outline>Buy Me!</Button>
