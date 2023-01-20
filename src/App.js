@@ -1,30 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import ButtonPage from "./pages/ButtonPage";
-import Accordion from "./components/Accordion";
+import AccordionPage from "./pages/AccordionPage";
+import Dropdown from "./components/Dropdown";
 import { FaAccessibleIcon } from "react-icons/fa";
 
 const App = () => {
-  const items = [
-    {
-      id: 1,
-      label: "Can i use react?",
-      content: "you can!",
-    },
-    {
-      id: 2,
-      label: "Can i use Node?",
-      content: "Nope!",
-    },
-    {
-      id: 3,
-      label: "Can i use Angular?",
-      content: "SO difficult!",
-    },
+  const [selection, setSelection] = useState()
+
+  const options = [
+    { label: "Red", value: "Red" },
+    { label: "Blue", value: "Blue" },
+    { label: "Green", value: "Green" },
   ];
+
+  const handleSelect = (option) => {
+    setSelection(option.value)
+  }
 
   return (
     //  <div><ButtonPage /></div>
-    <Accordion items={items} />
+    // <AccordionPage items={items} />
+    <Dropdown selection={selection} options={options} onSelect={handleSelect}/>
   );
 };
 
