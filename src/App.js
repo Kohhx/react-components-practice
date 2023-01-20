@@ -5,7 +5,7 @@ import Dropdown from "./components/Dropdown";
 import { FaAccessibleIcon } from "react-icons/fa";
 
 const App = () => {
-  const [selection, setSelection] = useState()
+  const [value, setValue] = useState()
 
   const options = [
     { label: "Red", value: "Red" },
@@ -13,14 +13,14 @@ const App = () => {
     { label: "Green", value: "Green" },
   ];
 
-  const handleSelect = (option) => {
-    setSelection(option.value)
+  const handleChange = (option) => {
+    setValue(option.value)
   }
 
   return (
     //  <div><ButtonPage /></div>
     // <AccordionPage items={items} />
-    <Dropdown selection={selection} options={options} onSelect={handleSelect}/>
+    <Dropdown value={value} options={options} onChange={handleChange}/>
   );
 };
 

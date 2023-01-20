@@ -1,30 +1,46 @@
 import React, { useState } from "react";
+import { GoChevronDown } from "react-icons/go";
+import { GoChevronLeft } from "react-icons/go";
+import Panel from "./Panel";
 
-const Dropdown = ({ options, onSelect, selection }) => {
+const Dropdown = ({ options, onChange, value }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOptions = (option) => {
-    onSelect(option);
+    onChange(option);
     setIsOpen(false);
   };
 
-  let content = "Select...";
-  if (selection) {
-    content = selection;
-  }
-
   const renderedOptions = options.map((option, index) => {
     return (
-      <div onClick={() => handleOptions(option)} key={index}>
+      <div
+        className="hover:bg-sky-100 rounded cursor-pointer p-1"
+        onClick={() => handleOptions(option)}
+        key={index}
+      >
         {option.label}
       </div>
     );
   });
 
   return (
-    <div>
-      <div onClick={() => setIsOpen(!isOpen)}>{content}</div>
-      {isOpen && <div>{renderedOptions}</div>}
+    <div className="w-48 relative">
+      <Panel
+        className="flex justify-between items-center cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {value || "Select..."}
+        {isOpen ? (
+          <GoChevronDown className="text-lg" />
+        ) : (
+          <GoChevronLeft className="text-lg" />
+        )}
+      </Panel>
+      {isOpen && (
+        <Panel className="absolute top-full">
+          {renderedOptions}
+        </Panel>
+      )}
     </div>
   );
 };
