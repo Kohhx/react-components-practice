@@ -7,11 +7,13 @@ const Accordion = ({ items }) => {
 
   // Create function outside mapping function. Use this method
   const handleClick = (index) => {
-    if (expandedIndex === index) {
-      setExpandedIndex(-1);
-    } else {
-      setExpandedIndex(index);
-    }
+    setExpandedIndex( prevIndex => {
+      if (prevIndex === index) {
+        setExpandedIndex(-1);
+      } else {
+        setExpandedIndex(index);
+      }
+    })
   };
 
   const renderedItems = items.map((item, index) => {
